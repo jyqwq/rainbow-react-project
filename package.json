@@ -14,9 +14,7 @@
     "extract-intl": "node ./internals/scripts/extract-intl.js",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint app/**/*.js",
-    "lint:eslint": "eslint --ignore-path .eslintignore .",
-    "lint:eslint:fix": "eslint --ignore-path .eslintignore . --fix",
-    "lint:js": "npm run lint:eslint",
+    "lint:js": "node ./internals/scripts/eslint.js",
     "lint:staged": "lint-staged"
   },
   "husky": {
