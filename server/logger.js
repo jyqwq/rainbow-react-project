@@ -24,7 +24,7 @@ const logger = {
     if (tunnelStarted) {
       console.log(`通道初始化完成 ${chalk.green('✓')}`);
     }
-
+    /* eslint-disable indent */
     console.log(`
 ${chalk.bold('访问URL:')}${divider}
         本地地址: ${chalk.magenta(`http://${host}:${port}`)}
