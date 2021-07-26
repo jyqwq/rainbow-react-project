@@ -1,4 +1,6 @@
 {
   "app.containers.Home.changeLang": "Change Language",
+  "app.containers.Home.changeTheme": "Change Theme",
+  "app.containers.Home.subTitle": "Is the invisible color a rainbow?",
   "app.containers.Home.webTitle": "Rainbow In Paper"
 }

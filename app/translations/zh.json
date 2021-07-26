@@ -1,4 +1,6 @@
 {
   "app.containers.Home.changeLang": "切换语言",
+  "app.containers.Home.changeTheme": "切换主题",
+  "app.containers.Home.subTitle": "摸不到的颜色是彩虹吗？",
   "app.containers.Home.webTitle": "纸上的彩虹"
 }

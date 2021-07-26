@@ -6,6 +6,7 @@
  */
 import React, { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -19,31 +20,55 @@ import { makeSelectLocale } from '../LanguageProvider/selectors';
 import { defaultAction } from './actions';
 import messages from './messages';
 import Nodes from './nodes';
-import { Button } from 'antd';
+import { Button, PageHeader } from 'antd';
 import { changeLocale } from '../LanguageProvider/actions';
 
 export function Home(props) {
   useInjectReducer({ key: 'home', reducer });
   useInjectSaga({ key: 'home', saga });
-  const { msg } = props.home;
   useEffect(() => {
     props.defaultAction();
-    console.log(messages);
+    console.log('组件加载');
+    return () => {
+      console.log('组件卸载');
+    };
   }, []);
   return (
-    <Nodes.Container>
-      <Nodes.Title>
-        <FormattedMessage {...messages.webTitle} />
-      </Nodes.Title>
-      <Button
-        type="primary"
-        onClick={() => {
-          props.changeLang(props.locale === 'zh' ? 'en' : 'zh');
-        }}
+    <div>
+      <FormattedMessage {...messages.webTitle}>
+        {title => (
+          <Helmet>
+            <title>{title}</title>
+            <meta name="description" content="Description of Home" />
+          </Helmet>
+        )}
+      </FormattedMessage>
+      <PageHeader
+        onBack={() => window.history.back()}
+        title={<FormattedMessage {...messages.webTitle} />}
+        subTitle={<FormattedMessage {...messages.subTitle} />}
+        extra={[
+          <Button
+            key="1"
+            type="primary"
+            onClick={() => {
+              props.changeLang(props.locale === 'zh' ? 'en' : 'zh');
+            }}
+          >
+            <FormattedMessage {...messages.changeLang} />
+          </Button>,
+          <Button key="2" type="primary">
+            <FormattedMessage {...messages.changeTheme} />
+          </Button>,
+        ]}
       >
-        <FormattedMessage {...messages.changeLang} />
-      </Button>
-    </Nodes.Container>
+        <Nodes.Container>
+          <Nodes.Title>
+            <FormattedMessage {...messages.webTitle} />
+          </Nodes.Title>
+        </Nodes.Container>
+      </PageHeader>
+    </div>
   );
 }
 
