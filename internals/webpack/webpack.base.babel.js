@@ -32,6 +32,26 @@ module.exports = options => ({
         use: ['style-loader', 'css-loader'],
       },
       {
+        // Preprocess 3rd party .less files located in node_modules
+        test: /\.less$/,
+        include: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              // 这里需要在less的配置规则里打开javascriptEnabled
+              javascriptEnabled: true,
+            },
+          },
+        ],
+      },
+      {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         use: 'file-loader',
       },

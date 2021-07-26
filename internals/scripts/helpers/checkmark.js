@@ -1,10 +1,11 @@
 const chalk = require('chalk');
 
-/**
- * Adds mark check symbol
- */
-function addCheckMark(callback) {
-  process.stdout.write(chalk.green(' ✓'));
+function addCheckMark(callback, fail = false) {
+  if (fail) {
+    process.stdout.write(chalk.red(' ×'));
+  } else {
+    process.stdout.write(chalk.green(' ✓'));
+  }
   if (callback) callback();
 }
 

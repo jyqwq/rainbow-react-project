@@ -23,6 +23,8 @@ const FILES_TO_PARSE = 'app/**/messages.js';
 
 const newLine = () => process.stdout.write('\n');
 
+let FAIL_TO_LOAD = false;
+
 let progress;
 const task = message => {
   progress = animateProgress(message);
@@ -33,7 +35,7 @@ const task = message => {
       process.stderr.write(error);
     }
     clearTimeout(progress);
-    return addCheckmark(() => newLine());
+    return addCheckmark(() => newLine(), FAIL_TO_LOAD);
   };
 };
 
@@ -67,6 +69,7 @@ for (const locale of appLocales) {
         `加载当前国际化信息文件出错: ${translationFileName}
         \n${error}`,
       );
+      FAIL_TO_LOAD = true;
     }
   }
 }
@@ -91,6 +94,7 @@ const extractFromFile = async filename => {
     }
   } catch (error) {
     process.stderr.write(`\n国际化信息文件出错: ${filename}\n${error}\n`);
+    FAIL_TO_LOAD = true;
   }
 };
 
@@ -122,13 +126,18 @@ memoryTask.then(files => {
       const prettified = `${JSON.stringify(messages, null, 2)}\n`;
 
       try {
-        fs.writeFileSync(translationFileName, prettified);
-        localeTaskDone();
+        if (!FAIL_TO_LOAD) {
+          fs.writeFileSync(translationFileName, prettified);
+          localeTaskDone();
+        } else {
+          localeTaskDone(' 失败');
+        }
       } catch (error) {
         localeTaskDone(
           `保存当前国际化文件的时候出现错误: ${translationFileName}
           \n${error}`,
         );
+        FAIL_TO_LOAD = true;
       }
     }
 

@@ -18,7 +18,7 @@ import { makeSelectHome } from './selectors';
 import { makeSelectLocale } from '../LanguageProvider/selectors';
 import { defaultAction } from './actions';
 import messages from './messages';
-import Nodes from './node';
+import Nodes from './nodes';
 import { Button } from 'antd';
 import { changeLocale } from '../LanguageProvider/actions';
 
@@ -32,8 +32,11 @@ export function Home(props) {
   }, []);
   return (
     <Nodes.Container>
-      <div>{msg}</div>
+      <Nodes.Title>
+        <FormattedMessage {...messages.webTitle} />
+      </Nodes.Title>
       <Button
+        type="primary"
         onClick={() => {
           props.changeLang(props.locale === 'zh' ? 'en' : 'zh');
         }}

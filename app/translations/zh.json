@@ -1,3 +1,4 @@
 {
-  "app.containers.Home.changeLang": "切换语言"
+  "app.containers.Home.changeLang": "切换语言",
+  "app.containers.Home.webTitle": "纸上的彩虹"
 }
