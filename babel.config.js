@@ -13,7 +13,6 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
     ['import', { libraryName: 'antd-mobile', style: 'css' }],
-    ['formatjs', { idInterpolationPattern: '[sha512:contenthash:base64:6]', ast: true }],
   ],
   env: {
     production: {

@@ -12,7 +12,6 @@ module.exports = {
   plugins: ['prettier', 'redux-saga', 'react', 'react-hooks', 'jsx-a11y'],
   // 检测环境
   env: {
-    jest: true, // Jest 全局变量。后面我们会加上Jest测试模块会用到。
     browser: true, // 浏览器环境中的全局变量。
     node: true, // Node.js 全局变量和 Node.js 作用域。
     es6: true, // 启用除了 modules 以外的所有 ECMAScript 6 特性（该选项会自动设置 ecmaVersion 解析器选项为 6）。
@@ -73,7 +72,9 @@ module.exports = {
     'react/jsx-first-prop-new-line': [2, 'multiline'], // 限制首个属性的位置
     'react/jsx-filename-extension': 0, // 限制文件扩展名
     'react/jsx-no-target-blank': 0, // 避免使用不安全的target=_blank属性
+    'react/jsx-props-no-spreading': 0, // 避免jsx使用解构赋值
     'react/jsx-uses-vars': 2, // 防止使用中的变量错误的标记为未使用
+    'react/prop-types': 0, // 防止在react组件定义中缺少props验证
     'react/require-default-props': 0, // 为不是必需属性的每个属性强制默认属性定义
     'react/self-closing-comp': 0, // 防止没有孩子的组件有额外的闭标签
     'react/sort-comp': 0, // 强制组件方法顺序

@@ -19,7 +19,7 @@ plugins.push('react-intl');
 
 plugins = plugins.filter(p => p !== 'styled-components');
 
-const FILES_TO_PARSE = 'app/**/!(*.test).js';
+const FILES_TO_PARSE = 'app/**/messages.js';
 
 const newLine = () => process.stdout.write('\n');
 
@@ -74,15 +74,19 @@ for (const locale of appLocales) {
 const extractFromFile = async filename => {
   try {
     const code = await readFile(filename);
-
     const output = await transform(code, { filename, presets, plugins });
     const messages = get(output, 'metadata.react-intl.messages', []);
 
     for (const message of messages) {
       for (const locale of appLocales) {
-        const oldLocaleMapping = oldLocaleMappings[locale][message.id];
-        const newMsg = locale === DEFAULT_LOCALE ? message.defaultMessage : '';
-        localeMappings[locale][message.id] = oldLocaleMapping || newMsg;
+        const oldLocaleMapping = oldLocaleMappings[locale][message.id] || '';
+        let newMsg = '';
+        if (locale === DEFAULT_LOCALE) {
+          newMsg = message.defaultMessage;
+        } else if (message.description) {
+          newMsg = message.description;
+        }
+        localeMappings[locale][message.id] = newMsg || oldLocaleMapping;
       }
     }
   } catch (error) {
