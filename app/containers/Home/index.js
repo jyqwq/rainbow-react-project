@@ -22,6 +22,7 @@ import messages from './messages';
 import Nodes from './nodes';
 import { Button, PageHeader } from 'antd';
 import { changeLocale } from '../LanguageProvider/actions';
+import ThemeSelect from '../../components/ThemeSelect/Loadable';
 
 export function Home(props) {
   useInjectReducer({ key: 'home', reducer });
@@ -57,9 +58,7 @@ export function Home(props) {
           >
             <FormattedMessage {...messages.changeLang} />
           </Button>,
-          <Button key="2" type="primary">
-            <FormattedMessage {...messages.changeTheme} />
-          </Button>,
+          <ThemeSelect key="2" />,
         ]}
       >
         <Nodes.Container>
