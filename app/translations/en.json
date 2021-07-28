@@ -1,7 +1,5 @@
 {
-  "app.components.Button.cancel": "Cancel",
-  "app.components.Button.changeTheme": "Change Theme",
-  "app.components.Button.select": "Select Theme",
+  "app.components.ThemeSelect.changeTheme": "Change Theme",
   "app.containers.Home.changeLang": "Change Language",
   "app.containers.Home.changeTheme": "Change Theme",
   "app.containers.Home.subTitle": "Is the invisible color a rainbow?",

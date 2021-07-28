@@ -1,0 +1,16 @@
+import produce from 'immer';
+import { COMPONENT_DID_MOUNT } from './constants';
+
+export const initialState = {};
+
+/* eslint-disable default-case, no-param-reassign */
+const {{ camelCase name }}Reducer = (state = initialState, action) =>
+  // eslint-disable-next-line no-unused-vars
+  produce(state, draft => {
+    switch (action.type) {
+      case COMPONENT_DID_MOUNT:
+        break;
+    }
+  });
+
+export default {{ camelCase name }}Reducer;

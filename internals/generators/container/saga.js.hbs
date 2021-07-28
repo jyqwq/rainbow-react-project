@@ -1,0 +1,16 @@
+// eslint-disable-next-line no-unused-vars
+import { take, takeLatest, put, select } from 'redux-saga/effects';
+import { COMPONENT_DID_MOUNT } from './constants';
+
+// 页面初始化
+export function* componentDidMountSaga() {
+  try {
+    console.log('componentDidMountSaga');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export default function* {{ camelCase name }}Saga() {
+  yield takeLatest(COMPONENT_DID_MOUNT, componentDidMountSaga)
+}

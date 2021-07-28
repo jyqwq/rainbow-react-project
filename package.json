@@ -15,7 +15,9 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint app/**/*.js",
     "lint:js": "node ./internals/scripts/eslint.js",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "generate": "plop --plopfile internals/generators/index.js",
+    "prettify": "prettier --write"
   },
   "husky": {
     "hooks": {
@@ -69,6 +71,7 @@
     "less-loader": "^10.0.1",
     "lint-staged": "^11.1.1",
     "offline-plugin": "^5.0.7",
+    "plop": "^2.7.4",
     "pre-commit": "^1.2.2",
     "prettier": "^2.3.2",
     "react-app-polyfill": "^2.0.0",

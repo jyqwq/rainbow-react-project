@@ -1,7 +1,5 @@
 {
-  "app.components.Button.cancel": "取消",
-  "app.components.Button.changeTheme": "切换主题",
-  "app.components.Button.select": "选择主题",
+  "app.components.ThemeSelect.changeTheme": "切换主题",
   "app.containers.Home.changeLang": "切换语言",
   "app.containers.Home.changeTheme": "切换主题",
   "app.containers.Home.subTitle": "摸不到的颜色是彩虹吗？",

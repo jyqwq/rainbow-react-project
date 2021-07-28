@@ -1,13 +1,14 @@
 import React, { memo, useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import { Popover, Button, message } from 'antd';
-import { BlockPicker } from 'react-color';
+import { BlockPicker, CirclePicker } from 'react-color';
 import Nodes from './nodes';
 
-function ThemeSelect() {
+function ThemeSelect(props) {
   const [visible, setVisible] = useState(false);
+  const type = props.type === 'circle' ? 'circle' : 'default';
 
   const handleColorChange = color => {
     window.less
@@ -28,12 +29,18 @@ function ThemeSelect() {
   return (
     <>
       <Popover
-        content={<BlockPicker onChange={handleColorChange} />}
+        content={
+          type === 'circle' ? (
+            <CirclePicker onChange={handleColorChange} />
+          ) : (
+            <BlockPicker onChange={handleColorChange} />
+          )
+        }
         trigger="click"
         visible={visible}
         onVisibleChange={handleVisibleChange}
       >
-        <Button key="2" type="primary">
+        <Button type="primary">
           <FormattedMessage {...messages.changeTheme} />
         </Button>
       </Popover>
@@ -42,6 +49,12 @@ function ThemeSelect() {
   );
 }
 
-ThemeSelect.propTypes = {};
+ThemeSelect.defaultProps = {
+  type: 'default',
+};
+
+ThemeSelect.propTypes = {
+  type: PropTypes.string,
+};
 
 export default memo(ThemeSelect);

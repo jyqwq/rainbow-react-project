@@ -58,7 +58,7 @@ export function Home(props) {
           >
             <FormattedMessage {...messages.changeLang} />
           </Button>,
-          <ThemeSelect key="2" />,
+          <ThemeSelect key="2" type="circle" />,
         ]}
       >
         <Nodes.Container>
