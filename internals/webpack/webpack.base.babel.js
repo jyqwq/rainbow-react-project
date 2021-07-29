@@ -119,9 +119,11 @@ module.exports = options => ({
       antDir: path.join(__dirname, '../../node_modules/antd'),
       stylesDir: path.join(__dirname, '../../app/static/theme'),
       varFile: path.join(__dirname, '../../app/static/theme/variables.less'),
-      indexFileName: '../../app/index.html',
+      indexFileName: 'index.html',
       mainLessFile: path.join(__dirname, '../../app/static/theme/index.less'),
       themeVariables: ['@primary-color', '@btn-primary-bg', '@link-color'],
+      lessUrl: 'https://cdn.bootcdn.net/ajax/libs/less.js/2.7.2/less.min.js',
+      publicPath: '',
     }),
   ]),
   resolve: {
