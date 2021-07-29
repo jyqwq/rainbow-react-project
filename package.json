@@ -15,26 +15,9 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint app/**/*.js",
     "lint:js": "node ./internals/scripts/eslint.js",
-    "lint:staged": "lint-staged",
     "generate": "plop --plopfile internals/generators/index.js",
     "prettify": "prettier --write"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "npm run lint:eslint:fix",
-      "git add --force"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add --force"
-    ]
-  },
-  "pre-commit": "lint:staged",
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.14.8",
@@ -66,13 +49,10 @@
     "eslint-plugin-redux-saga": "^1.2.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
-    "husky": "^7.0.1",
     "image-webpack-loader": "^7.0.1",
     "less-loader": "^10.0.1",
-    "lint-staged": "^11.1.1",
     "offline-plugin": "^5.0.7",
     "plop": "^2.7.4",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.3.2",
     "react-app-polyfill": "^2.0.0",
     "rimraf": "^3.0.2",
@@ -84,7 +64,6 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "svg-url-loader": "^7.1.1",
     "terser-webpack-plugin": "^5.1.4",
-    "typescript": "^4.3.5",
     "url-loader": "^4.1.1",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2",
