@@ -48,7 +48,10 @@ if (!window.Intl) {
   render(translationMessages);
 }
 
-if (process.env.NODE_ENV === 'production') {
-  // eslint-disable-next-line global-require
-  require('offline-plugin/runtime').install();
-}
+// if (process.env.NODE_ENV === 'production') {
+//   // eslint-disable-next-line global-require
+//   const runtime = require('offline-plugin/runtime');
+//   runtime.install();
+//   // 如果我们不进行 applyUpdate 那么本地缓存的资源将永远得不到更新直到清除浏览器缓存
+//   runtime.applyUpdate();
+// }
